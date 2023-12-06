@@ -36,5 +36,10 @@
     },
     "config": {
         "bin-dir": "bin/"
+    },
+    "scripts" : {
+	"tests" : [
+            "vendor/bin/phpunit"
+	]
     }
 }
