@@ -1,5 +1,5 @@
 # Checks code with Rector and auto-commits
-name: Rector CI
+name: RectorCI
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
   rector:
     runs-on: ubuntu-latest
     ## if: github.event.pull_request.head.repo.full_name == github.repository
-    if: github.event.pull_request.head.repo.full_name == '/BorislavSabev/php-sepa-xml/'
+    if: github.event.pull_request.head.repo.full_name == 'BorislavSabev/php-sepa-xml/'
     steps:
       -
         if: github.event.pull_request.head.repo.full_name == github.repository
