@@ -1,6 +1,6 @@
 php-sepa-xml
 ============
-
+a negleageable change
 Master: [![Build Status](https://api.travis-ci.org/php-sepa-xml/php-sepa-xml.png?branch=master)](http://travis-ci.org/php-sepa-xml/php-sepa-xml)
 
 SEPA file generator for PHP.
