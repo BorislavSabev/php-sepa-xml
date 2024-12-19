@@ -26,7 +26,7 @@ jobs:
         run: composer install --no-progress --ansi
 
       - name: Run Rector
-        run: vendor/bin/rector --ansi
+        run: bin/rector --ansi
 
       -
         # commit only to core contributors who have repository access
