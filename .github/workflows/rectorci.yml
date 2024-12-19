@@ -9,8 +9,7 @@ on:
 jobs:
   rector:
     runs-on: ubuntu-latest
-    ## if: github.event.pull_request.head.repo.full_name == github.repository
-    if: github.event.pull_request.head.repo.full_name == 'BorislavSabev/php-sepa-xml/'
+    if: github.event.pull_request.head.repo.full_name == github.repository
     steps:
       -
         if: github.event.pull_request.head.repo.full_name == github.repository
