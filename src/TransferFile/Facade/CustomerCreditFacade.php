@@ -31,7 +31,7 @@ class CustomerCreditFacade extends BaseCustomerTransferFileFacade
             throw new InvalidArgumentException(sprintf('Payment with the name %s already exists', $paymentName));
         }
 
-        $originAgentBic = (isset ($paymentInformation['debtorAgentBIC'])) ? $paymentInformation['debtorAgentBIC'] : NULL;
+        $originAgentBic = $paymentInformation['debtorAgentBIC'] ?? NULL;
         $payment = new PaymentInformation(
             $paymentInformation['id'],
             $paymentInformation['debtorAccountIBAN'],
