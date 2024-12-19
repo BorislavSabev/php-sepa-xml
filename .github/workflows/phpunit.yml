@@ -1,8 +1,8 @@
-name: PHP Composer
+name: PHPUnit
 
 on:
   push:
-    branches: [ "testing" ]
+    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
@@ -30,7 +30,7 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+      run: composer install --no-progress --ansi
 
     - name: Run test suite
       run: composer run-script phpunit
