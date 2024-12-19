@@ -2,9 +2,7 @@
 name: RectorCI
 
 on:
-  push:
-    branches: [ "testing" ]
-#  pull_request: null
+  pull_request: null
 
 jobs:
   rector:
