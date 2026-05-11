@@ -6,7 +6,7 @@ Note: XML entities (like `<`, `>`, `&`, etc.) will still be escaped separately. 
 
 ### Example: Custom Sanitization
 ```php
-use SepaXml\Util\Sanitizer;
+use Digitick\Sepa\Util\Sanitizer;
 
 // Change the global sanitizer to a custom implementation
 Sanitizer::setSanitizer(function (string $value): string {
@@ -16,7 +16,7 @@ Sanitizer::setSanitizer(function (string $value): string {
 
 ### Example: Disable Sanitization
 ```php
-use SepaXml\Util\Sanitizer;
+use Digitick\Sepa\Util\Sanitizer;
 
 // Disable the sanitizer globally
 Sanitizer::disableSanitizer();
@@ -24,7 +24,7 @@ Sanitizer::disableSanitizer();
 
 ### Reset Sanitization
 ```php
-use SepaXml\Util\Sanitizer;
+use Digitick\Sepa\Util\Sanitizer;
 
 // Reset the sanitizer to its default behavior
 Sanitizer::resetSanitizer();

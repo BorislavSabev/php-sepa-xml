@@ -212,6 +212,6 @@ $header->setInitiatingPartyId('DE21WVM1234567890');
 
 $directDebit = TransferFileFacadeFactory::createDirectDebitWithGroupHeader($header, 'pain.008.001.09');
 
-$directDebit->setOmitAgentElementIfBicMissing(true);
+$directDebit->setOmitGroupHeaderControlSum(true);
 $directDebit->setOmitAgentElementIfBicMissing(true);
 ```

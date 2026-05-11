@@ -50,7 +50,7 @@ The variable names are used to describe what should be contained within them.
 
     // Write to a file:
     $domBuilder = DomBuilderFactory::createDomBuilder($sepaFile, $painFormat); //For e.g. 'pain.001.001.08'
-    file_put_contents($filePath, $domBuilder->asXml());.
+    file_put_contents($filePath, $domBuilder->asXml());
     // ...or retrieve the \DomDocument object, modify it and do something else with it:
     $domBuilder->asDoc();
 ```
@@ -102,6 +102,6 @@ use Digitick\Sepa\TransferFile\Factory\TransferFileFacadeFactory;
 // Returns a CustomerCreditFacade
 $customerCredit = TransferFileFacadeFactory::createCustomerCredit('test123', 'Me');
 
-$customerCredit->setOmitAgentElementIfBicMissing(true);
+$customerCredit->setOmitGroupHeaderControlSum(true);
 $customerCredit->setOmitAgentElementIfBicMissing(true);
 ```
