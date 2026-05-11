@@ -78,15 +78,8 @@ Check out our docs at:
 * [handling Credit Transfers](doc/credit_transfer.md)
 * [handling string sanitization](doc/string_sanitization.md)
 
-### ISO20022 Message Names
-ISO20022 messages follow a specific naming convention which can be denoted to the following pattern:
-`MessageType.MessageSubType.MessageVariant.MessageVersion`
-
-For e.g. pain.001.001.12 should be decoded as:
-- MessageType: 'PAIN' - Payments Initiation
-- MessageSubType: '001' - CustomerCreditTransferInitiation
-- MessageVariant: '001'
-- MessageVersion: '12'
+### ISO 20022 Message Names
+See [reference/iso20022-naming.md](doc/reference/iso20022-naming.md).
 
 
 ## Development
