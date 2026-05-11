@@ -3,9 +3,6 @@ Direct Debit Payment Initiation
 
 * [Sample usage of DirectDebit File](#sample-usage-of-directdebit-file)
 * [Sample Usage DirectDebit with Factory](#sample-usage-of-directdebit-with-facade-factory)
-* [Sample Usage DirectDebit with Factory and Custom Header](#sample-usage-directdebit-with-factory-and-custom-header)
-* [Add an amendment to a transfer](#add-an-amendment-to-a-transfer)
-* [Add address information to transaction](#add-address-information-to-transaction)
 
 
 Sample usage of DirectDebit File
@@ -107,90 +104,6 @@ $directDebit->addTransfer('firstPayment', array(
 // Retrieve the resulting XML
 $directDebit->asXML();
 ```
-
-Sample Usage DirectDebit with Factory and Custom Header
--------------------------------------------------------
-In this example we pass our own custom GroupHeader:
-
-```php
-use Digitick\Sepa\TransferFile\Factory\TransferFileFacadeFactory;
-use Digitick\Sepa\PaymentInformation;
-use Digitick\Sepa\GroupHeader;
-
-//Set the custom header (Spanish banks example) information
-$header = new GroupHeader(date('Y-m-d-H-i-s'), 'Me');
-$header->setInitiatingPartyId('DE21WVM1234567890');
-
-$directDebit = TransferFileFacadeFactory::createDirectDebitWithGroupHeader($header, 'pain.008.001.09');
-
-$directDebit->addPaymentInfo('firstPayment', array(
-    'id'                    => 'firstPayment',
-    'dueDate'               => new DateTime('now + 7 days'), // optional. Otherwise default period is used
-    'creditorName'          => 'My Company',
-    'creditorAccountIBAN'   => 'FI1350001540000056',
-    'creditorAgentBIC'      => 'PSSTFRPPMON',
-    'seqType'               => PaymentInformation::S_ONEOFF,
-    'creditorId'            => 'DE21WVM1234567890',
-    'localInstrumentCode'   => 'CORE' // default. optional.
-));
-
-$directDebit->addTransfer('firstPayment', array(
-    'amount'                => 500,
-    'debtorIban'            => 'FI1350001540000056',
-    'debtorBic'             => 'OKOYFIHH',
-    'debtorName'            => 'Their Company',
-    'debtorMandate'         => 'AB12345',
-    'debtorMandateSignDate' => '13.10.2012',
-    'remittanceInformation' => 'Order 123456',
-    'endToEndId'            => 'MyUniqueClutchId',
-    
-));
-// Retrieve the resulting XML
-$directDebit->asXML();
-```
-
-Add an amendment to a transfer
-------------------------------
-Add a Single Transaction to the named PaymentInfo object
-```php
-$directDebit->addTransfer('firstPayment', array(
-    'amount'                  => 500,
-    'debtorIban'              => 'FI1350001540000056',
-    'debtorBic'               => 'OKOYFIHH',
-    'debtorName'              => 'Their Company',
-    'remittanceInformation'   => 'Purpose of this credit transfer',
-    'endToEndId'              => 'Invoice-No X' // optional, if you want to provide additional structured info
-    // Amendments start here
-    'originalMandateId'       => '1234567890',
-    'originalDebtorIban'      => 'AT711100015440033700',
-    'amendedDebtorAccount'    => true
-));
-```
-
-Add address information to transaction
---------------------------------------
-If the debtor account belongs to a bank that is not a member of the European Economic Area (EEA), the address data of the account holder must be added to the transaction.
-For sure one must do this of the following countries: Switzerland, Andorra, Monaco, San Marino, Vatican City and the United Kingdom.
-Through it is generally a good practice to add this data anyway. 
-
-
-```php
-$directDebit->addTransfer('firstPayment', [
-    'amount'            => 1499,
-    'debtorIban'        => 'CH6089144731137988786',
-    'debtorBic'         => 'CRESCHZZXXX',
-    'debtorName'        => 'John Doe',
-    // ...
-    // and the relevant address data
-    'debtorCountry'     => 'CH',
-    'postCode'          => '8245',
-    'townName'          => 'Feuerthalen',
-    'streetName'        => 'Example Street',
-    'buildingNumber'    => '12',
-    'floorNumber'       => '13'
-]);
-````
-
 
 Additional Features
 --------------------------------------
